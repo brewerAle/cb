@@ -2,30 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Coding Train: Data/APIs 1</title>
+    <title>Fetch JSON from API</title>
   </head>
   <body>
-    <h1>Fetch a Rainbow</h1>
-    <img src="" id="rainbow" width="480" />
+    <h1>Where is the ISS?</h1>
+
+    <p>
+      temp: <span id="tem"></span>°<br />
+    </p>
+
     <script>
-      console.log('about to fetch a rainbow');
+      const api_url = 'https://postman-echo.com/post';
 
-      catchRainbow()
-        .then(response => {
-          console.log('yay');
-        })
-        .catch(error => {
-          console.log('error!');
-          console.error(error);
-        });
+      async function getISS() {
+        const response = await fetch(api_url);
+        const data = await response.json();
+        const { temp } = data;
 
-      async function catchRainbow() {
-        const response = await fetch('rainbow.jpg');
-        const blob = await response.blob();
-        document.getElementById('rainbow').src = URL.createObjectURL(blob);
+        document.getElementById('tem').textContent = temp;
       }
+
+      getISS();
     </script>
   </body>
 </html>
