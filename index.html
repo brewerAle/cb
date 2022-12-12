@@ -1,18 +1,31 @@
 <!DOCTYPE html>
-<html>
-  <head><!DOCTYPE html>        
-  <html>    
-    <head>    
-     <meta content="width=device-width, initial-scale=1" name="viewport"></meta>    
-    </head>    
-    <body>    
-     <center><h2>Creekside Brewery </h2></center>    
-     <center>    
-      
-      <form>    
-      <button name="LeED" type="submit" value="1"> OG ON </button>    
-      <button name="LEeD" type="submit" value="0"> FG OFF </button>  
-      <button name="LD" type="submit" value="2"> ABV </button>
-      <form>
-     </body>    
-    </html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Coding Train: Data/APIs 1</title>
+  </head>
+  <body>
+    <h1>Fetch a Rainbow</h1>
+    <img src="" id="rainbow" width="480" />
+    <script>
+      console.log('about to fetch a rainbow');
+
+      catchRainbow()
+        .then(response => {
+          console.log('yay');
+        })
+        .catch(error => {
+          console.log('error!');
+          console.error(error);
+        });
+
+      async function catchRainbow() {
+        const response = await fetch('rainbow.jpg');
+        const blob = await response.blob();
+        document.getElementById('rainbow').src = URL.createObjectURL(blob);
+      }
+    </script>
+  </body>
+</html>
