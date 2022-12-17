@@ -7,10 +7,10 @@ e<!DOCTYPE html>
     <title>Fetch JSON from API</title>
   </head>
   <body>
-    <h1>Fermentor</h1>
+    <h1>FermentorStuff</h1>
 
     <p>
-      temp: <span id="tem"></span>°<br />
+      Temp: <span id="tem"></span>°<br />
     </p>
 
     <script>
@@ -19,7 +19,7 @@ e<!DOCTYPE html>
       async function getISS() {
         const response = await fetch(api_url);
         const data = await response.json();
-        const { temp } = 66;
+        const { temp } = data;
 
         document.getElementById('tem').textContent = temp;
       }
