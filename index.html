@@ -1,30 +1,32 @@
-e<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Fetch JSON from API</title>
+    <title>Coding Train: Data and APIs Project 1</title>
   </head>
   <body>
-    <h1>FermentorStuff</h1>
-
-    <p>
-      Temp: <span id="tem"></span>°<br />
-    </p>
-
+    Open the JavaScript Console to see the output.
     <script>
-      const api_url = 'https://postman-echo.com/post';
+      // Data from: https://data.giss.nasa.gov/gistemp/
+      // Mean from: https://earthobservatory.nasa.gov/world-of-change/DecadalTemp
 
-      async function getISS() {
-        const response = await fetch(api_url);
-        const data = await response.json();
-        const { temp } = data;
+      getData()
 
-        document.getElementById('tem').textContent = temp;
+      async function getData() {
+        // const response = await fetch('testdata.csv');
+        const response = await fetch('ZonAnn.Ts+dSST.csv');
+        const data = await response.text();
+
+        const table = data.split('\n').slice(1);
+        table.forEach(row => {
+          const cols = row.split(',');
+          const year = cols[0]
+          const temp = cols[1]
+          console.log(year, temp)
+        });
       }
-
-      getISS();
     </script>
   </body>
 </html>
