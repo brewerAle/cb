@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+e<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,8 +15,8 @@
       getData()
 
       async function getData() {
-        // const response = await fetch('testdata.csv');
-        const response = await fetch('ZonAnn.Ts+dSST.csv');
+        const response = await fetch('fermentor.csv');
+        //const response = await fetch('ZonAnn.Ts+dSST.csv');
         const data = await response.text();
 
         const table = data.split('\n').slice(1);
