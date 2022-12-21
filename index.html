@@ -20,7 +20,7 @@
         //const response = await fetch('ZonAnn.Ts+dSST.csv');
         const data = await response.text();
 
-        const table = data.split('\n').slice(1);
+        const table = data.split('\n');
         table.forEach(row => {
           const cols = row.split(',');
           const brix = cols[0]
