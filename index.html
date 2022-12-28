@@ -23,15 +23,19 @@
         const table = data.split('\n');
         table.forEach(row => {
           const cols = row.split(',');
-          const brix = cols[0]
-          const og = cols[1]
-          const fg = cols[2]
-          const att = cols[3]
+          const temp = cols[0]
+          const brix = cols[1]
+          const og = cols[2]
+          const fg = cols[3]
+          const att = cols[4]
+          const abv = cols[5]
           //console.log(brix, og, fg, att)
-          document.body.append("BRIX   ",brix);
+          document.body.append("Tempature   ",temp);
+          document.body.append("  BRIX   ",brix);
           document.body.append("  OG  ",og);
           document.body.append("  FG  ",fg);
           document.body.append("  ATT  ",att);
+          document.body.append("ABV   ",abv);
         });
       }
     </script>
