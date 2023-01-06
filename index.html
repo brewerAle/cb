@@ -1,45 +1,42 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Creekside Brewery</title>
-  </head>
-  <body>
-    <h1>Fermentaion Data</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read CSV files with javascript fetch method</title>
+    <style>
+        td {
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <table>
  
+    </table>
     <script>
-      // Data from: https://data.giss.nasa.gov/gistemp/
-      // Mean from: https://earthobservatory.nasa.gov/world-of-change/DecadalTemp
-
-      getData()
-
-      async function getData() {
-        const response = await fetch('fermenApi.csv');
-        //const response = await fetch('ZonAnn.Ts+dSST.csv');
-        const data = await response.text();
-
-        const table = data.split('\n');
-        table.forEach(row => {
-          const cols = row.split(',');
-          const date = cols[0]
-          const temp = cols[1]
-          const brix = cols[2]
-          const og = cols[3]
-          const fg = cols[4]
-          const att = cols[5]
-          const abv = cols[6]
-          //console.log(brix, og, fg, att)
-          document.body.append("Date   ",date);
-          document.body.append("   Tempature   ",temp);
-          document.body.append("  BRIX   ",brix);
-          document.body.append("  OG  ",og);
-          document.body.append("  FG  ",fg);
-          document.body.append("  ATT  ",att);
-          document.body.append("ABV   ",abv);
-        });
-      }
+//         tutorial link : https://www.youtube.com/watch?v=gnqHNJNc_0A
+        onload = fetch("./fermenApi.csv").then(res => {
+            return res.text()
+        }).then(data => {
+            let result = data.split(/\r?\n|\r/).map(e => {
+                return e.split(",")
+            })
+            result.forEach(e => {
+                let m = e.map(e => {
+                    return `<td>${e}</td>`;
+                }).join("")
+                let ce = document.createElement("tr");
+                ce.innerHTML = m;
+                if (ce.innerText != "") {
+                    document.querySelector("table").appendChild(ce);
+                }
+                // console.log(m);
+ 
+            })
+        })
     </script>
-  </body>
+</body>
 </html>
+
