@@ -27,7 +27,7 @@
 </head>
 <body>
     <table class="center">
-      <center><h2>Fermentation </h2></center>
+      <center><h2>Chichen Coop </h2></center>
 	      <tr>
     <th>Date</th>
     <th>Time</th>
@@ -38,6 +38,7 @@
 //         tutorial link : https://www.youtube.com/watch?v=gnqHNJNc_0A
         onload = fetch("./fermenApi.csv").then(res => {
             return res.text()
+      <center><h2>Chichen  </h2></center>
         }).then(data => {
             let result = data.split(/\r?\n|\r/).map(e => {
                 return e.split(",")
