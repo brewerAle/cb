@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chicken Coop</title>
+    <title>Creekside Brewery</title>
     <style>
         td,th {
             border: 2px solid black;
@@ -27,19 +27,22 @@
 </head>
 <body>
     <table class="center">
-      <center><h2>Chicken Coop </h2></center>
+      <center><h2>Fermentation </h2></center>
 	      <tr>
-    <th>Date</th>
-    <th>Time</th>
-    <th>Temp °F</th>
+    <th>Date & Time</th>
+    <th>Temperature °F</th>
+    <th>PSI</th>
+    <th>Brix</th>
+    <th>OG</th>
+    <th>FG</th>
+    <th>ATT %</th>
+    <th>ABV %</th>
   </tr>
     </table>
     <script>
 //         tutorial link : https://www.youtube.com/watch?v=gnqHNJNc_0A
         onload = fetch("./fermenApi.csv").then(res => {
             return res.text()
-      <center><h2>Chicken  
-      </h2></center>
         }).then(data => {
             let result = data.split(/\r?\n|\r/).map(e => {
                 return e.split(",")
@@ -60,4 +63,5 @@
     </script>
 </body>
 </html>
+
 
